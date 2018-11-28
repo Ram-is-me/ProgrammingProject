@@ -64,7 +64,7 @@ void Matrix::fill_data_from_csv(const string filename)
         // continue;
         // cout << "4th Element(" << row[3] << ")\n";
         Record *r;
-        r = new Record(0, row.get_vector());
+        r = new Record(row.get_vector());
         // for(int i=0;i<row.get_vector().size();i++)
             // cout<<row.get_vector()[i]<<" ";
         cout<<endl;
@@ -75,16 +75,26 @@ void Matrix::fill_data_from_csv(const string filename)
         {
             temp2.push_back(stod(temp1[i]));
         }
-        for(int i=0;i<temp2.size();i++)
-            cout<<temp2[i]<<" ";
         matrix.push_back(temp2);
-        for(int i=0;i<matrix.size();i++)
-            cout<<matrix[i][0]<<" ";
         temp2.clear();
     }
 }
 
 void Matrix::convert_from_dataset(DataSet &ds)
 {
-
+    int n = ds.get_n();
+    vector<string> temp1;
+    vector<double> temp2;
+    for(int i=0;i<ds.no_of_records();i++)
+    {
+        temp1 = ds.get_data_set()[i].get_record();
+        for(int i=n;i<temp1.size();i++)
+        {
+            temp2.push_back(stod(temp1[i]));
+        }
+        matrix.push_back(temp2);
+        temp2.clear();
+    }
+    r = matrix.size();
+    c = matrix[0].size();
 }
