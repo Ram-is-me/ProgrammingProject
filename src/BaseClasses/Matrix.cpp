@@ -1,4 +1,6 @@
 #include "matrix.h"
+#include "csvrow.h"
+#include "dataset.h"
 #include <fstream>
 #include <iostream>
 #include <iterator>
@@ -9,11 +11,6 @@ Matrix::Matrix(const int ir , const int ic)
 {
     r = ir;
     c = ic;
-    matrix.resize(r);
-    for(int i=0;i<r;i++)
-    {
-        matrix[i].resize(c);
-    }
 }
 
 vector<double> Matrix::get_row_i(const int i)
@@ -33,6 +30,61 @@ vector<double> Matrix::get_column_i(const int i)
 
 void Matrix::fill_data_from_csv(const string filename)
 {
-    
+    ifstream file(filename);
+    CSVRow row;
+
+    string firstLine;
+    getline(file, firstLine);
+
+    string temp("");
+
+    int i=0;
+    while(firstLine[i]>=48 && firstLine[i]<=57)
+    {
+        temp+=firstLine[i++];
+    }
+    cout<<temp<<endl;
+    r = stoi(temp);
+    i++;
+    temp="";
+    while(firstLine[i]>=48 && firstLine[i]<=57)
+    {
+        temp+=firstLine[i++];
+    }
+    cout<<temp<<endl;
+    c = stoi(temp);
+
+    string line;
+
+    stringstream lineStream(line);
+    string cell;
+
+    while(file >> row)
+    {
+        // continue;
+        // cout << "4th Element(" << row[3] << ")\n";
+        Record *r;
+        r = new Record(0, row.get_vector());
+        // for(int i=0;i<row.get_vector().size();i++)
+            // cout<<row.get_vector()[i]<<" ";
+        cout<<endl;
+        // .push_back(*r);
+        vector<string> temp1 = r->get_record();
+        vector<double> temp2;
+        for(int i=0;i<temp1.size();i++)
+        {
+            temp2.push_back(stod(temp1[i]));
+        }
+        for(int i=0;i<temp2.size();i++)
+            cout<<temp2[i]<<" ";
+        matrix.push_back(temp2);
+        for(int i=0;i<matrix.size();i++)
+            cout<<matrix[i][0]<<" ";
+        temp2.clear();
+    }
 }
 
+void Matrix::convert_from_dataset(DataSet &ds)
+{
+
+}
