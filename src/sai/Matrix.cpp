@@ -5,7 +5,7 @@
 #include <algorithm>
 using namespace std;
 
-Matrix::Matrix(const int ir , const int ic )
+Matrix::Matrix(const int ir , const int ic)
 {
     r = ir;
     c = ic;

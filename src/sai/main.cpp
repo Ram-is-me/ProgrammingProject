@@ -13,7 +13,7 @@ int main()
     {
         for(i2=0;i2<5;i2++)
         {
-            mat.get_matrix()[i1][i2]=i1+i2;
+            mat.set_value(i1,i2,i1+i2);
         }
     }
     for(i1=0;i1<5;i1++)
@@ -34,4 +34,10 @@ int main()
         }
         cout<<endl;
     }
+    vector<double> temp1= get_evalues(temp);
+    for(i1=0;i1<temp1.size();i1++)
+    {
+        cout<<endl<<temp1[i1]<<" ";
+    }
+    cout<<endl;
 }

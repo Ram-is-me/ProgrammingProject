@@ -196,6 +196,7 @@ vector< vector<double> > random_init(int ax,int ay)
         for(i2=0;i2<ay;i2++)
         {
             temp[i1][i2]=rand()%100+1;
+            // cout<<temp[i1][i2]<<" ";
         }
     }
     return temp;
@@ -245,7 +246,7 @@ vector< vector<double> > power_itration(Matrix S,int k)
     for(i1=0;i1<k;i1++)
     {
         temp1=random_init(S.get_row_size(),1);
-        int nor=norm(temp1);
+        double nor=norm(temp1);
         temp1=division_scalar(temp1,nor);
         do{
             for(i2=0;i2<i1-1;i2++)
@@ -258,10 +259,29 @@ vector< vector<double> > power_itration(Matrix S,int k)
         }while(matrix_mul(mat_transpose(temp1),temp1)[0][0]<1-E);
         for(i3=0;i3<S.get_row_size();i3++)
         {
-            temp.get_matrix()[i1][i3]=temp1[i3][0];
+            temp.set_value(i1,i3,temp1[i3][0]);
         }
     }
     return temp.get_matrix();
+}
+
+vector<double> get_evalues(vector< vector<double> > a)
+{
+    int i1,i2;
+    vector<double> tag;
+    for(i1=0;i1<a.size();i1++)
+    {
+        double temp=a[i1][0];
+        for(i2=0;i2<a[0].size();i2++)
+        {
+            if(a[i1][i2]>temp)
+            {
+                temp=a[i1][i2];
+            }
+        }
+        tag.push_back(temp);
+    }
+    return tag;
 }
 
 
