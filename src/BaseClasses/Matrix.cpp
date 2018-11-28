@@ -43,7 +43,7 @@ void Matrix::fill_data_from_csv(const string filename)
     {
         temp+=firstLine[i++];
     }
-    cout<<temp<<endl;
+    // cout<<temp<<endl;
     r = stoi(temp);
     i++;
     temp="";
@@ -51,7 +51,7 @@ void Matrix::fill_data_from_csv(const string filename)
     {
         temp+=firstLine[i++];
     }
-    cout<<temp<<endl;
+    // cout<<temp<<endl;
     c = stoi(temp);
 
     string line;
@@ -67,7 +67,7 @@ void Matrix::fill_data_from_csv(const string filename)
         r = new Record(row.get_vector());
         // for(int i=0;i<row.get_vector().size();i++)
             // cout<<row.get_vector()[i]<<" ";
-        cout<<endl;
+        // cout<<endl;
         // .push_back(*r);
         vector<string> temp1 = r->get_record();
         vector<double> temp2;
@@ -83,11 +83,16 @@ void Matrix::fill_data_from_csv(const string filename)
 void Matrix::convert_from_dataset(DataSet &ds)
 {
     int n = ds.get_n();
-    vector<string> temp1;
-    vector<double> temp2;
     for(int i=0;i<ds.no_of_records();i++)
     {
-        temp1 = ds.get_data_set()[i].get_record();
+        vector<string> temp1;
+        vector<double> temp2;
+        Record *r;
+
+        r = new Record(ds.get_data_set()[i].get_record());
+        temp1 = r->get_record();
+        // cout<<"lol"<<temp1.size()<<endl;
+        
         for(int i=n;i<temp1.size();i++)
         {
             temp2.push_back(stod(temp1[i]));
@@ -97,4 +102,19 @@ void Matrix::convert_from_dataset(DataSet &ds)
     }
     r = matrix.size();
     c = matrix[0].size();
+}
+
+void Matrix::output_to_csv(const string filename)
+{
+    ofstream file(filename);
+
+    file<<r<<" "<<c<<endl;
+    for(int i=0;i<r;i++)
+    {
+        for(int j=0;j<c-1;j++)
+        {
+            file<<matrix[i][j]<<";";
+        }
+        file<<matrix[i][c-1]<<endl;
+    }
 }

@@ -6,7 +6,7 @@
 class Task1 
 {
     public:
-    static void runTask1(DataSet data);
+    static void runTask1(const string filename, int n);
     static double cosineSimilarity(vector<double> r1, vector<double> r2);
     static double kmeansClustering(int k);
     private:

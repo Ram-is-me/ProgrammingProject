@@ -31,6 +31,7 @@ class Matrix
     }
     void fill_data_from_csv(string filename);
     void convert_from_dataset(DataSet &ds);
+    void output_to_csv(string filename);
     private:
     int r;
     int c;
