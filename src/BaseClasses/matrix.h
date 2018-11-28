@@ -2,6 +2,7 @@
 #define MATRIX_H
 #include <vector>
 #include <string>
+#include "dataset.h"
 using namespace std;
 class Matrix
 {
@@ -15,10 +16,16 @@ class Matrix
     {
         return c;
     }
+    
     vector<double> get_row_i(int i);
     vector<double> get_column_i(int i);
-    vector< vector<double> > get_matrix();
+
+    vector< vector<double> > get_matrix()
+    {
+        return matrix;
+    }
     void fill_data_from_csv(string filename);
+    void convert_from_dataset(DataSet &ds);
     private:
     int r;
     int c;

@@ -32,11 +32,6 @@ vector<double> Matrix::get_column_i(const int i)
     return column;
 }
 
-vector< vector<double> > Matrix::get_matrix()
-{
-    return matrix;
-}
-
 void Matrix::fill_data_from_csv(const string filename)
 {
     
