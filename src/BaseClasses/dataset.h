@@ -7,13 +7,20 @@ using namespace std;
 class DataSet
 {
     public:
-    DataSet();
-    DataSet(const long size);
     void read_from_csv(const string filename, int n);
     long no_of_records()
     {
         return data.size();
     } //Reading Data Set from CSV File
+    vector<Record> get_data_set()
+    {
+        return data;
+    }
+    vector<Record> get_data_set() const
+    {
+        return data;
+    }
+    
     private:
     vector<Record> data;  //Data Set Representation
 };
