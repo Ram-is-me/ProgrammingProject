@@ -24,6 +24,11 @@ class Matrix
     {
         return matrix;
     }
+
+    void set_value(int i, int j, double value)
+    {
+        matrix[i][j] = value;
+    }
     void fill_data_from_csv(string filename);
     void convert_from_dataset(DataSet &ds);
     private:
