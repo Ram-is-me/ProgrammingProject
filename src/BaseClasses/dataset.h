@@ -9,7 +9,7 @@ class DataSet
     public:
     DataSet();
     DataSet(const long size);
-    void read_from_csv(const string filename);
+    void read_from_csv(const string filename, int n);
     long no_of_records()
     {
         return data.size();

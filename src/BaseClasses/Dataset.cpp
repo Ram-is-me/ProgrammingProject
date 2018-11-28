@@ -10,7 +10,7 @@ DataSet::DataSet(const long size)
     data.resize(size);
 }
 
-void DataSet::read_from_csv(const string filename)
+void DataSet::read_from_csv(const string filename, int n)
 {
     
 }
