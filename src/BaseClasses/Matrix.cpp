@@ -3,10 +3,9 @@
 #include <iostream>
 #include <iterator>
 #include <algorithm>
-#include <boost/algorithm/string.hpp>
 using namespace std;
 
-Matrix::Matrix(const int ir = 100, const int ic = 100)
+Matrix::Matrix(const int ir , const int ic)
 {
     r = ir;
     c = ic;
