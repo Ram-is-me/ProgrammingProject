@@ -25,6 +25,11 @@ class Matrix
         return matrix;
     }
 
+    double get_value(int i, int j)
+    {
+        return matrix[i][j];
+    }
+
     void set_value(int i, int j, double value)
     {
         matrix[i][j] = value;
