@@ -46,7 +46,7 @@ void reverse_cuthill_mckee(SymmetricMatrix sym_mat, vector <int> int_vec)
             R.push_back(row_no);
             for(int j = 0; j < columns; j++)
             {
-                
+
             }
         }
 
