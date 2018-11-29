@@ -1,9 +1,9 @@
 #include "task1.h"
 
-void Task1::runTask1(const string filename, int n)
+void runTask1(const string ifilename, const string ofilename, int n)
 {
     DataSet data;
-    data.read_from_csv(filename, n);
+    data.read_from_csv(ifilename, n);
 
     Matrix mdata(data.no_of_records(),data.get_data_set()[0].get_record().size());
     mdata.convert_from_dataset(data);
@@ -22,5 +22,6 @@ void Task1::runTask1(const string filename, int n)
         }
     }
 
-    
+    cosim.output_to_csv(ofilename);
+
 }
