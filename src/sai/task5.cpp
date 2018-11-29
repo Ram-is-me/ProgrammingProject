@@ -228,7 +228,7 @@ vector< vector<double> > matrix_subtract(vector< vector<double> >a,vector< vecto
     return temp;
 }
 
-vector< vector<double> > power_itration(Matrix S,int k)
+vector< vector<double> > power_itration(Matrix S,int k,vector<double>& value)
 {
     int i1,i2,i3;
     Matrix temp(S.get_row_size(),S.get_column_size());
@@ -256,6 +256,7 @@ vector< vector<double> > power_itration(Matrix S,int k)
             }
             temp1=matrix_mul(S.get_matrix(),temp1);
             nor=norm(temp1);
+            value.push_back(nor);
             temp1=division_scalar(temp1,nor);
         }while(matrix_mul(mat_transpose(temp1),temp1)[0][0]<1-E);
         for(i3=0;i3<S.get_row_size();i3++)
@@ -266,23 +267,6 @@ vector< vector<double> > power_itration(Matrix S,int k)
     return temp.get_matrix();
 }
 
-vector<double> get_evalues(vector< vector<double> > a)
-{
-    int i1,i2;
-    vector<double> tag;
-    for(i1=0;i1<a.size();i1++)
-    {
-        double temp=a[i1][0];
-        for(i2=0;i2<a[0].size();i2++)
-        {
-            if(a[i1][i2]>temp)
-            {
-                temp=a[i1][i2];
-            }
-        }
-        tag.push_back(temp);
-    }
-    return tag;
-}
+
 
 
