@@ -8,6 +8,7 @@ using namespace std;
 int main()
 {
     Matrix mat(5,5);
+    mat.re_size(5,5);
     int i1,i2;
     for(i1=0;i1<5;i1++)
     {

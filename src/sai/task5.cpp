@@ -232,6 +232,7 @@ vector< vector<double> > power_itration(Matrix S,int k)
 {
     int i1,i2,i3;
     Matrix temp(S.get_row_size(),S.get_column_size());
+    temp.re_size(S.get_row_size(),S.get_column_size());
     for(i1=0;i1<S.get_row_size();i1++)
     {
         vector<double> temp2;

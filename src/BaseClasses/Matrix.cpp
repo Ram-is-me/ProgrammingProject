@@ -13,6 +13,17 @@ Matrix::Matrix(const int ir , const int ic)
     c = ic;
 }
 
+void Matrix::re_size(int r,int c)
+{
+    matrix.resize(r);
+    int i;
+    for(i=0;i<r;i++)
+    {
+        matrix[i].resize(c);
+    }
+
+}
+
 vector<double> Matrix::get_row_i(const int i)
 {
     return matrix[i];
