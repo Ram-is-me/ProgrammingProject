@@ -9,6 +9,7 @@ class DataSet
     public:
     void read_from_csv(const string filename, int in);
     void output_to_csv(const string filename);
+    void add_a_column(vector<double> values);
     long no_of_records()
     {
         return data.size();
@@ -41,7 +42,7 @@ class DataSet
         data.push_back(Record(str));
     }
 
-    void set_record(vector<string< str, int i)
+    void set_record(vector<string> str, int i)
     {
         data[i] = Record(str);
     }

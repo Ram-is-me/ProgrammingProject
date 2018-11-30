@@ -15,6 +15,8 @@ ostream& operator<<(ostream& str, Record& data)
 
 int main()
 {
+    srand(time(NULL));
+
     DataSet d;
     int n=1;
     d.read_from_csv("input.csv", n);

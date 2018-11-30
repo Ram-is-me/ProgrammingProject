@@ -35,3 +35,15 @@ void DataSet::output_to_csv(const string filename)
     }
     file.close();
 }
+
+void DataSet::add_a_column(vector<double> values)
+{
+    for(int i=0;i<data.size();i++)
+    {
+        vector<string> insertion;
+        insertion = data[i].get_record();
+        insertion.push_back(to_string(values[i]));
+        Record *r = new Record(insertion);
+        data[i] = *r;
+    }
+}

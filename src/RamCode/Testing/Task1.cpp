@@ -2,7 +2,7 @@
 #include <cmath>
 #include <iostream>
 #include <cstdlib>
-#include <time>
+#include <ctime>
 void runTask1(const string ifilename, const string mofilename, const string nfilename, int n, int k)
 {
     DataSet data;
@@ -53,12 +53,96 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     }
     //cosim is now Cosine Dissimilarity Matrix
 
-    srand(time(NULL));
 
-    vector<vector<Record>> clusters;
+    vector<vector<vector<double>>> clusters(k);
 
+    int size = data.no_of_records();
+    vector<vector<double>> datmat = mdata.get_matrix();
+    vector<vector<double>> centroids;
+    int count=k;
+
+    vector<double> temp;
+    int choice;
+    set<int> kset;
+    vector<int> clusterindex;
+
+    vector<int> rowtocluster;
+    while(count--)
+    {
+        choice = rand()%size;
+        while(kset.find(choice))
+        {
+            choice = rand()%size;
+        }
+        kset.insert(choice);
+        clusterindex.push_back(choice);
+        clusters[clusters.size()].push_back(datmat[i]);
+        centroids.push_back(datmat[i]);
+    }
+
+    for(int i=0;i<size;i++)
+    {
+        if(kset.find(i)) 
+        {
+            int index=0;
+            while(index<clusterindex.size())
+            {
+                if(clusterindex[index]==i)
+                {
+                    rowtocluster.push_back(index);  //Row to Cluster value updation
+                    break;
+                }
+                index++;
+            }
+            continue;
+        }
+
+        vector<double> comparision;
+        //Finding the cosine dissimilarity values for each cluster 
+        for(int j=0;j<k;j++)
+        {
+            comparision.push_back(1 - cosineSimilarity(centroid[j],datmat[i]));
+        }
+
+        //Choosing the cluster with minimum dissimilarity
+        int minindex=0;
+        double minvalue=9999999999.9999;
+        int iter=0;
+        while(iter<k)
+        {
+            if(comparision[iter]<minvalue)
+            {
+               minvalue = comparision[iter];
+               minindex = iter;
+            }
+            iter++;
+        }
+
+        clusters[minindex].push_back(datmat[i]);
+
+        //Updating centroid for that cluster
+        for(int q=0;q<centroid[minindex].size();q++)
+        {
+            centroid[minindex][q] = averageFunction(clusters[minindex], q);
+        }
+
+        rowtocluster.push_back(minindex);
+    }
     
-    
+
+    //Create new DataSet and output to file
+    data.add_a_column(rowtocluster);
+    data.output_to_csv(nfilename);
+}
+
+double averageFunction(vector<vector<double>> temp, int q)
+{
+    double sum = 0;
+    for(int i=0;i<temp.size();i++)
+    {
+        sum+=temp[i][q];
+    }
+    sum/=temp.size();
 }
 
 double cosineSimilarity(vector<double> r1, vector<double> r2)
