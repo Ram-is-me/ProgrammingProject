@@ -10,6 +10,7 @@ class DataSet
     void read_from_csv(const string filename, int in);
     void output_to_csv(const string filename);
     void add_a_column(vector<double> values);
+    void add_an_int_column(vector<int> values);
     long no_of_records()
     {
         return data.size();

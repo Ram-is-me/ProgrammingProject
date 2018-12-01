@@ -3,6 +3,12 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#include <set>
+
+double averageFunction(vector<vector<double>> temp, int q);
+
+
+
 void runTask1(const string ifilename, const string mofilename, const string nfilename, int n, int k)
 {
     DataSet data;
@@ -54,9 +60,11 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     //cosim is now Cosine Dissimilarity Matrix
 
 
+
+
     vector<vector<vector<double>>> clusters(k);
 
-    int size = data.no_of_records();
+    // int size = data.no_of_records();
     vector<vector<double>> datmat = mdata.get_matrix();
     vector<vector<double>> centroids;
     int count=k;
@@ -70,19 +78,21 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     while(count--)
     {
         choice = rand()%size;
-        while(kset.find(choice))
+        while(kset.find(choice)!=kset.end())
         {
             choice = rand()%size;
         }
         kset.insert(choice);
         clusterindex.push_back(choice);
-        clusters[clusters.size()].push_back(datmat[i]);
-        centroids.push_back(datmat[i]);
+        clusters[clusters.size()-1].push_back(datmat[choice]);
+        centroids.push_back(datmat[choice]);
+        // cout<<"\nSeg Fault Error above\n";  
     }
+
 
     for(int i=0;i<size;i++)
     {
-        if(kset.find(i)) 
+        if(kset.find(i)!=kset.end()) 
         {
             int index=0;
             while(index<clusterindex.size())
@@ -97,11 +107,12 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
             continue;
         }
 
+
         vector<double> comparision;
         //Finding the cosine dissimilarity values for each cluster 
         for(int j=0;j<k;j++)
         {
-            comparision.push_back(1 - cosineSimilarity(centroid[j],datmat[i]));
+            comparision.push_back(1 - cosineSimilarity(centroids[j],datmat[i]));
         }
 
         //Choosing the cluster with minimum dissimilarity
@@ -121,9 +132,9 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
         clusters[minindex].push_back(datmat[i]);
 
         //Updating centroid for that cluster
-        for(int q=0;q<centroid[minindex].size();q++)
+        for(int q=0;q<centroids[minindex].size();q++)
         {
-            centroid[minindex][q] = averageFunction(clusters[minindex], q);
+            centroids[minindex][q] = averageFunction(clusters[minindex], q);
         }
 
         rowtocluster.push_back(minindex);
@@ -131,7 +142,13 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     
 
     //Create new DataSet and output to file
-    data.add_a_column(rowtocluster);
+    // vector<double> out(size);
+    // for(int i=0;i<rowtocluster.size();i++)
+    // {
+    //     out[i] = (double)rowtocluster[i];
+    // }
+    // data.add_a_column(out);
+    data.add_an_int_column(rowtocluster);
     data.output_to_csv(nfilename);
 }
 

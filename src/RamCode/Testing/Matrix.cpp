@@ -106,7 +106,12 @@ void Matrix::convert_from_dataset(DataSet &ds)
         
         for(int i=n;i<temp1.size();i++)
         {
-            temp2.push_back(stod(temp1[i]));
+            try {
+                temp2.push_back(stod(temp1[i]));
+            } catch(invalid_argument)
+            {
+                temp2.push_back((double) stoi(temp1[i]));
+            }
         }
         matrix.push_back(temp2);
         temp2.clear();
