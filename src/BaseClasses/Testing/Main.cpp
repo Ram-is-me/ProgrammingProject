@@ -6,19 +6,18 @@
 #include <iostream>
 
 void runTask1(string input, string output1, string output2, int n, int k);
-
 // void runTask4(string inputFile, string outputFile1);
 void runTask5(string inputFile, string outputFile1, int ev);
 void runTask6(string input);
-// void runTask7(string inputFile, string outputFile1);
-// void runTask8(string inputFile, string outputFile1);
+void runTask7(string inputFile);
+void runTask8(string inputFile);
 
 int main()
 {
     cout<<"Welcome to a Simple Tabular Data Processing toolkit\n";
     cout<<"We support a total of 6 functionalities.\n";
     cout<<"Please refer to the README for more details\n";
-    cout<<"Please Enter a Number (1-6) to run the corresponding Task\n";
+    cout<<"Please Enter a Number (1,5,6,7,8) to run the corresponding Task\n";
     // cout<<"1 4 5 6 7 8 -- 1 2 3 4 5 6\n";
     cout<<"Press 0 to Quit\n";
     int choice;
@@ -72,14 +71,16 @@ int main()
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
-                // runTask7(inputFile, outputFile1);
+                runTask7(inputFile);
+                cout<<endl;
                 break;
             case 8:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
-                // runTask8(inputFile);
+                runTask8(inputFile);
+                cout<<endl;
                 break;
             default:
                 cout<<"Wrong Choice\n";
@@ -111,9 +112,15 @@ void runTask6(string input)
     min_degree_algo(m.get_matrix());
 }
 
-// void runTask7(string input)
-// {
+void runTask7(string input)
+{
 //     // Task7 t;
 //     // t.reverse_cuthill_mckee(input);
 //     reverse_cuthill_mckee(input);
-// }
+}
+
+void runTask8(string input)
+{
+    //Task8 t;
+    // t.executeTask8();
+}
