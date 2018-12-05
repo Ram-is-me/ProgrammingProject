@@ -1,9 +1,9 @@
 #include "symmetricmatrix.h"
 #include "dataset.h"
-#include "task1.h"
-#include "task5.h"
-#include "task6.h"
-#include "task8.h"
+#include "./Task1/task1.h"
+#include "./Task5/task5.h"
+#include "./Task6/task6.h"
+#include "./Task8/robin_algo.h" 
 #include <iostream>
 
 void runTask1(string input, string output1, string output2, int n, int k);
