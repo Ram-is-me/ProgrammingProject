@@ -84,8 +84,14 @@ void Matrix::fill_data_from_csv(const string filename)
         vector<double> temp2;
         for(int i=0;i<temp1.size();i++)
         {
-            temp2.push_back(stod(temp1[i]));
-        }
+            try {
+                temp2.push_back(stod(temp1[i]));
+            }
+            catch (exception)
+            {
+                temp2.push_back((double)stoi(temp1[i]));
+            }
+        } 
         matrix.push_back(temp2);
         temp2.clear();
     }

@@ -2,13 +2,14 @@
 #include "dataset.h"
 #include "task1.h"
 #include "task5.h"
+#include "task6.h"
 #include <iostream>
 
 void runTask1(string input, string output1, string output2, int n, int k);
 
 // void runTask4(string inputFile, string outputFile1);
 void runTask5(string inputFile, string outputFile1, int ev);
-// void runTask6(string inputFile, string outputFile1);
+void runTask6(string input);
 // void runTask7(string inputFile, string outputFile1);
 // void runTask8(string inputFile, string outputFile1);
 
@@ -18,7 +19,7 @@ int main()
     cout<<"We support a total of 6 functionalities.\n";
     cout<<"Please refer to the README for more details\n";
     cout<<"Please Enter a Number (1-6) to run the corresponding Task\n";
-    cout<<"1 4 5 6 7 8 -- 1 2 3 4 5 6\n";
+    // cout<<"1 4 5 6 7 8 -- 1 2 3 4 5 6\n";
     cout<<"Press 0 to Quit\n";
     int choice;
     cin>>choice;
@@ -42,14 +43,14 @@ int main()
                 cin>>k;
                 runTask1(inputFile, outputFile1, outputFile2, n, k);
                 break;
-            case 2:
+            case 4:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
                 // runTask4(inputFile, outputFile1);
                 break;
-            case 3:
+            case 5:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
@@ -59,21 +60,21 @@ int main()
                 cin>>ev;
                 runTask5(inputFile, outputFile1, ev);
                 break;
-            case 4:
+            case 6:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
-                cout<<"Provide Output File Name\n";
-                cin>>outputFile1;
-                // runTask6(inputFile, outputFile1);
+                cout<<endl;
+                runTask6(inputFile);
+                cout<<endl;
                 break;
-            case 5:
+            case 7:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
                 // runTask7(inputFile, outputFile1);
                 break;
-            case 6:
+            case 8:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
@@ -98,13 +99,21 @@ void runTask1(string input, string output1, string output2, int n, int k)
 
 void runTask5(string inputfile, string outputfile, int ev)
 {
-    task5 task(inputfile);
+    Task5 task(inputfile);
     task.power_itration(ev);
     task.output_to_csv(outputfile);
 }
 
 void runTask6(string input)
 {
-
+    Matrix m;
+    m.fill_data_from_csv(input);
+    min_degree_algo(m.get_matrix());
 }
 
+// void runTask7(string input)
+// {
+//     // Task7 t;
+//     // t.reverse_cuthill_mckee(input);
+//     reverse_cuthill_mckee(input);
+// }

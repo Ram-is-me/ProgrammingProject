@@ -9,7 +9,7 @@
 #include<string>
 #include <fstream>
 using namespace std;
-class task5
+class Task5
 {
     private:
     Matrix S;
@@ -27,7 +27,7 @@ class task5
     void cpy(vector< vector<double> >&,vector< vector<double> >&);
     vector< vector<double> > matrix_subtract(vector< vector<double> >a,vector< vector<double> >b);
     public:
-    task5(string filename);
+    Task5(string filename);
     void power_itration(int k);
     void output_to_csv(string );
     };

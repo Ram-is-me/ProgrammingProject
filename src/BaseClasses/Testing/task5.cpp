@@ -1,10 +1,10 @@
 #include "task5.h"
 
-task5::task5(string filename)
+Task5::Task5(string filename)
 {
     S.fill_data_from_csv(filename);
 }
-vector< vector<double> >task5::matrix_mul(vector< vector<double> > a,vector< vector<double> > b)
+vector< vector<double> >Task5::matrix_mul(vector< vector<double> > a,vector< vector<double> > b)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -33,7 +33,7 @@ vector< vector<double> >task5::matrix_mul(vector< vector<double> > a,vector< vec
     return temp;
 }
 
-vector< vector<double> > task5::mat_transpose(vector< vector<double> > a)
+vector< vector<double> > Task5::mat_transpose(vector< vector<double> > a)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -56,7 +56,7 @@ vector< vector<double> > task5::mat_transpose(vector< vector<double> > a)
     return temp;
 }
 
-vector< vector<double> > task5::mat_transpose(vector<double>  a)
+vector< vector<double> > Task5::mat_transpose(vector<double>  a)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -75,7 +75,7 @@ vector< vector<double> > task5::mat_transpose(vector<double>  a)
     }
     return temp;
 }
-double task5::norm(vector< vector<double> > a)
+double Task5::norm(vector< vector<double> > a)
 {
     double temp=0;
     if(a[0].size()==1)
@@ -90,7 +90,7 @@ double task5::norm(vector< vector<double> > a)
     return temp;
 }
 
-vector< vector<double> > task5::multiply_scalar(vector< vector<double> > a,double k)
+vector< vector<double> > Task5::multiply_scalar(vector< vector<double> > a,double k)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -113,7 +113,7 @@ vector< vector<double> > task5::multiply_scalar(vector< vector<double> > a,doubl
     return temp;
 }
 
-vector< vector<double> > task5::division_scalar(vector< vector<double> > a,double k)
+vector< vector<double> > Task5::division_scalar(vector< vector<double> > a,double k)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -136,7 +136,7 @@ vector< vector<double> > task5::division_scalar(vector< vector<double> > a,doubl
     return temp;
 }
 
-vector< vector<double> > task5::subtract_scalar(vector< vector<double> > a,double k)
+vector< vector<double> > Task5::subtract_scalar(vector< vector<double> > a,double k)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -159,7 +159,7 @@ vector< vector<double> > task5::subtract_scalar(vector< vector<double> > a,doubl
     return temp;
 }
 
-vector< vector<double> > task5::sum_scalar(vector< vector<double> > a,double k)
+vector< vector<double> > Task5::sum_scalar(vector< vector<double> > a,double k)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -182,7 +182,7 @@ vector< vector<double> > task5::sum_scalar(vector< vector<double> > a,double k)
     return temp;
 }
 
-vector< vector<double> > task5::random_init(int ax,int ay)
+vector< vector<double> > Task5::random_init(int ax,int ay)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -206,7 +206,7 @@ vector< vector<double> > task5::random_init(int ax,int ay)
     return temp;
 }
 
-vector< vector<double> > task5::matrix_subtract(vector< vector<double> >a,vector< vector<double> >b)
+vector< vector<double> > Task5::matrix_subtract(vector< vector<double> >a,vector< vector<double> >b)
 {
     vector< vector<double> > temp;
     int i1,i2,i3;
@@ -231,7 +231,7 @@ vector< vector<double> > task5::matrix_subtract(vector< vector<double> >a,vector
     }
     return temp;
 }
-void task5::cpy(vector< vector<double> >& from,vector< vector<double> >& to)
+void Task5::cpy(vector< vector<double> >& from,vector< vector<double> >& to)
 {
     int i1,i2;
     for(i1=0;i1<from.size();i1++)
@@ -242,7 +242,7 @@ void task5::cpy(vector< vector<double> >& from,vector< vector<double> >& to)
         }
     }
 }
-void task5::power_itration(int k)
+void Task5::power_itration(int k)
 {
     int i1,i2,i3;
     Matrix temp(S.get_row_size(),S.get_column_size());
@@ -286,7 +286,7 @@ void task5::power_itration(int k)
     }
     vectors=temp;
 }
-void task5::output_to_csv(const string filename)
+void Task5::output_to_csv(const string filename)
 {
     ofstream file(filename);
 
