@@ -32,44 +32,45 @@ void robin_algo::create()
     M = permutate(matrix_R,matrix_C,M);
 
     max = M.get_max_of_index(index);
-    bool rowDirection;
+    bool row_direction;
     index++;
-    int maxFromRows = M.get_max_of_column(index);
-    int maxFromCols = M.get_max_of_row(index);
+    int max_rows = M.get_max_of_column(index);
+    int max_columns = M.get_max_of_row(index);
+
     if(M.get_matrix()[M.get_max_of_column(index)][index] > M.get_matrix()[index][M.get_max_of_row(index)])
     {
-        rowDirection = true;
+        row_direction = true;
         matrix_R.mapit(index,M.get_max_of_column(index));
         M = matrix_R.permutate(M);
     }
     else
     {
-        rowDirection = false;
+        row_direction = false;
         matrix_C.mapit(index,M.get_max_of_row(index));
         M = matrix_C.permutate(M);
     }
     // M = permutate(matrix_R,matrix_C,initialMatrix);
-    int rowIndex = 2;
-    int colIndex = 2;
+    int row_index = 2;
+    int column_index = 2;
     index++;
-    while(rowIndex < rows || colIndex < rows)
+    while(row_index < rows || column_index < rows)
     {
-        if(rowDirection)
+        if(row_direction)
         {
-            max = M.get_max_of_column(rowIndex);
-            matrix_R.mapit(rowIndex,max);
+            max = M.get_max_of_column(row_index);
+            matrix_R.mapit(row_index,max);
             M = matrix_R.permutate(M);
-            rowIndex++;
+            row_index++;
         }
         else
         {
-            max = M.get_max_of_row(colIndex);
-            matrix_C.mapit(colIndex,max);
+            max = M.get_max_of_row(column_index);
+            matrix_C.mapit(column_index,max);
             M = matrix_C.permutate(M);
-            colIndex++;
+            column_index++;
         }
         // M = permutate(matrix_R,matrix_C,initialMatrix);
-        rowDirection = !rowDirection;
+        row_direction = !row_direction;
     }
 }
 
