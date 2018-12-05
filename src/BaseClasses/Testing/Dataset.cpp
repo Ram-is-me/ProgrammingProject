@@ -10,6 +10,8 @@ void DataSet::read_from_csv(const string filename, int in)
     ifstream file(filename);
     CSVRow row;
     n = in;
+    file >> row;
+    columnHeadings = row.get_vector();
     while(file >> row)
     {
         // continue;
@@ -25,12 +27,15 @@ void DataSet::read_from_csv(const string filename, int in)
 void DataSet::output_to_csv(const string filename)
 {
     ofstream file(filename);
+    for(int i=0;i<columnHeadings.size();i++)
+    file<<columnHeadings[i]<<",";
+    file<<endl;
     for(int i=0;i<data.size();i++)
     {
         int j;
         for(j=0;j<data[i].get_record().size()-1;j++)
         {
-            file<<data[i].get_record()[j]<<";";
+            file<<data[i].get_record()[j]<<",";
         }
         file<<data[i].get_record()[j];
         file<<endl;
@@ -60,4 +65,9 @@ void DataSet::add_an_int_column(vector<int> values)
         Record *r = new Record(insertion);
         data[i] = *r;
     }
+}
+
+void DataSet::add_a_column_header(string header)
+{
+    columnHeadings.push_back(header);
 }

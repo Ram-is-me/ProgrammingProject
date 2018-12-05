@@ -8,8 +8,7 @@
 double averageFunction(vector<vector<double>> temp, int q);
 
 
-
-void runTask1(const string ifilename, const string mofilename, const string nfilename, int n, int k)
+void Task1::executeTask1(const string ifilename, const string mofilename, const string nfilename, int n, int k)
 {
     //Initialize Data Set from Given File
     DataSet data;
@@ -39,6 +38,7 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     //First Output of Cosine Similarity Matrix
     cosim.output_to_csv(mofilename);
 
+    //cosim will become the Cosine Dissimilarity Matrix
     for(int i=0;i<size;i++)
     {
         for(int j=0;j<size;j++)
@@ -46,9 +46,6 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
             cosim.set_value(i,j,1-cosim.get_value(i,j));
         }
     }
-    //cosim is now Cosine Dissimilarity Matrix
-
-
 
     //K Means Clustering Algorithm
     vector<vector<vector<double>>> clusters(k);
@@ -129,6 +126,7 @@ void runTask1(const string ifilename, const string mofilename, const string nfil
     }
     
     data.add_an_int_column(rowtocluster);
+    data.add_a_column_header("Cluster Set");
     data.output_to_csv(nfilename);
 }
 
@@ -139,10 +137,10 @@ double averageFunction(vector<vector<double>> temp, int q)
     {
         sum+=temp[i][q];
     }
-    sum/=temp.size();
+    sum/=temp.size(); 
 }
 
-double cosineSimilarity(vector<double> r1, vector<double> r2)
+double Task1::cosineSimilarity(vector<double> r1, vector<double> r2)
 {
     double answer=0;
     for(int i=0;i<r1.size();i++)

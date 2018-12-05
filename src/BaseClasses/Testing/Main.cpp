@@ -4,6 +4,8 @@
 #include "task5.h"
 #include <iostream>
 
+void runTask1(string input, string output1, string output2, int n, int k);
+
 // void runTask4(string inputFile, string outputFile1);
 void runTask5(string inputFile, string outputFile1, int ev);
 // void runTask6(string inputFile, string outputFile1);
@@ -25,7 +27,7 @@ int main()
     {
         switch(choice)
         {
-            case 1:{
+            case 1:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File 1 Name\n";
@@ -39,15 +41,15 @@ int main()
                 cout<<"Provide number of partitions to be made:\n";
                 cin>>k;
                 runTask1(inputFile, outputFile1, outputFile2, n, k);
-            } break;
-            case 2:{
+                break;
+            case 2:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
                 // runTask4(inputFile, outputFile1);
-            } break;
-            case 3:{
+                break;
+            case 3:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
@@ -56,32 +58,30 @@ int main()
                 int ev;
                 cin>>ev;
                 runTask5(inputFile, outputFile1, ev);
-            } break;
-            case 4:{
+                break;
+            case 4:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
                 // runTask6(inputFile, outputFile1);
-            } break;
-            case 5:{
+                break;
+            case 5:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
                 // runTask7(inputFile, outputFile1);
-            } break;
-            case 6:{
+                break;
+            case 6:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
                 cout<<"Provide Output File Name\n";
                 cin>>outputFile1;
-                // runTask8(inputFile, outputFile1);
-            } break;
+                // runTask8(inputFile);
+                break;
             default:
-            {
                 cout<<"Wrong Choice\n";
-            }
         }
         cout<<"\nPlease Enter the Next Operation: [1-6] \n";
         cin>>choice;
@@ -90,9 +90,21 @@ int main()
     return 0;
 }
 
+void runTask1(string input, string output1, string output2, int n, int k)
+{
+    Task1 t;
+    t.executeTask1(input, output1, output2, n, k);
+}
+
 void runTask5(string inputfile, string outputfile, int ev)
 {
     task5 task(inputfile);
     task.power_itration(ev);
     task.output_to_csv(outputfile);
 }
+
+void runTask6(string input)
+{
+
+}
+

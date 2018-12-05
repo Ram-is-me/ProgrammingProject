@@ -129,8 +129,9 @@ void Matrix::output_to_csv(const string filename)
     {
         for(int j=0;j<matrix[i].size()-1;j++)
         {
-            file<<matrix[i][j]<<";";
+            file<<matrix[i][j]<<",";
         }
         file<<matrix[i][matrix[i].size()-1]<<endl;
     }
+    // file<<"eof"<<endl;
 }

@@ -15,7 +15,7 @@ void CSVRow::readNextRow(istream& str)
     string         cell;
 
     m_data.clear();
-    while(getline(lineStream, cell, ';'))
+    while(getline(lineStream, cell, ','))
     {
         m_data.push_back(cell);
     }
