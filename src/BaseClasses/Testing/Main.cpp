@@ -83,7 +83,8 @@ int main()
                 cout<<"Wrong Choice\n";
             }
         }
-
+        cout<<"\nPlease Enter the Next Operation: [1-6] \n";
+        cin>>choice;
     }
 
     return 0;
