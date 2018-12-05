@@ -1,5 +1,5 @@
-#ifndef MATRIX_H
-#define MATRIX_H
+#ifndef matrix_main_H
+#define matrix_main_H
 #include <vector>
 #include <string>
 #include "dataset.h"
