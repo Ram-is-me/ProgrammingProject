@@ -293,10 +293,11 @@ void Task5::output_to_csv(const string filename)
     file<<S.get_row_size()<<" "<<S.get_column_size()<<endl;
     for(int i=0;i<vectors.get_row_size();i++)
     {
-        for(int j=0;j<vectors.get_column_size();j++)
+        for(int j=0;j<vectors.get_column_size()-1;j++)
         {
-            file<<vectors.get_matrix()[i][j]<<";";
+            file<<vectors.get_matrix()[i][j]<<",";
         }
+        file<<vectors.get_matrix()[i][vectors.get_column_size()-1]<<" ";
         file<<"value = "<<value[i]<<endl;
     }
 }
