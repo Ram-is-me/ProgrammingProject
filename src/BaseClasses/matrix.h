@@ -34,6 +34,12 @@ class Matrix
     {
         matrix[i][j] = value;
     }
+
+    void push_row(vector<double> temp)
+    {
+        matrix.push_back(temp);
+    }
+    
     void re_size(int r, int c);
     void fill_data_from_csv(string filename);
     void convert_from_dataset(DataSet &ds);

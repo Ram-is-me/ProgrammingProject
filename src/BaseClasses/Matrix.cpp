@@ -106,7 +106,12 @@ void Matrix::convert_from_dataset(DataSet &ds)
         
         for(int i=n;i<temp1.size();i++)
         {
-            temp2.push_back(stod(temp1[i]));
+            try {
+                temp2.push_back(stod(temp1[i]));
+            } catch(invalid_argument)
+            {
+                temp2.push_back((double) stoi(temp1[i]));
+            }
         }
         matrix.push_back(temp2);
         temp2.clear();
@@ -120,12 +125,12 @@ void Matrix::output_to_csv(const string filename)
     ofstream file(filename);
 
     file<<r<<" "<<c<<endl;
-    for(int i=0;i<r;i++)
+    for(int i=0;i<matrix.size();i++)
     {
-        for(int j=0;j<c-1;j++)
+        for(int j=0;j<matrix[i].size()-1;j++)
         {
             file<<matrix[i][j]<<";";
         }
-        file<<matrix[i][c-1]<<endl;
+        file<<matrix[i][matrix[i].size()-1]<<endl;
     }
 }

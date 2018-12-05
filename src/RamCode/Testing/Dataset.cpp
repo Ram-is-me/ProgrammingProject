@@ -27,10 +27,12 @@ void DataSet::output_to_csv(const string filename)
     ofstream file(filename);
     for(int i=0;i<data.size();i++)
     {
-        for(int j=0;j<data[i].get_record().size();j++)
+        int j;
+        for(j=0;j<data[i].get_record().size()-1;j++)
         {
             file<<data[i].get_record()[j]<<";";
         }
+        file<<data[i].get_record()[j];
         file<<endl;
     }
     file.close();
