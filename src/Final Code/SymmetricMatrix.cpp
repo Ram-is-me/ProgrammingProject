@@ -4,3 +4,8 @@ SymmetricMatrix::SymmetricMatrix(int is) : Matrix(is, is)
 {
 
 }
+
+SymmetricMatrix::SymmetricMatrix()
+{
+    
+}

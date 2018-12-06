@@ -7,6 +7,7 @@ using namespace std;
 class SymmetricMatrix : public Matrix
 {
     public:
+    SymmetricMatrix();
     SymmetricMatrix(int is);  //Constructor
     SymmetricMatrix(const SymmetricMatrix &other); //Copy Constructor
     private:

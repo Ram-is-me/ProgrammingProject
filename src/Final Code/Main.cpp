@@ -3,6 +3,7 @@
 #include "task1.h"
 #include "task5.h"
 #include "task6.h"
+#include "task7.h"
 #include "task8.h"
 #include <iostream>
 
@@ -70,21 +71,21 @@ int main()
             case 7:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
-                cout<<"Provide Output File Name\n";
-                cin>>outputFile1;
+                cout<<endl;
                 runTask7(inputFile);
                 cout<<endl;
                 break;
             case 8:
                 cout<<"Provide Input File Name:\n";
                 cin>>inputFile;
+                cout<<endl;
                 runTask8(inputFile);
                 cout<<endl;
                 break;
             default:
                 cout<<"Wrong Choice\n";
         }
-        cout<<"\nPlease Enter the Next Operation: [1-6] \n";
+        cout<<"\nPlease Enter the Next Operation: (1,5,6,7,8) ; 0 to Quit \n";
         cin>>choice;
     }
 
@@ -113,9 +114,9 @@ void runTask6(string input)
 
 void runTask7(string input)
 {
-//     // Task7 t;
-//     // t.reverse_cuthill_mckee(input);
-//     reverse_cuthill_mckee(input);
+    Task7 t;
+    t.reverse_cuthill_mckee(input);
+    // reverse_cuthill_mckee(input);
 }
 
 void runTask8(string input)
