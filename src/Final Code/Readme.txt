@@ -13,3 +13,6 @@ g++ -std=c++17 *.cpp
 
 Sample input files have been provided which can be used, or own can be supplied.
 It must be made sure that the format of the input file is the same as the sample provided.
+
+Each Task has been written by that corresponding assigned person.
+This is the final and only version to be considered for grading for everyone.

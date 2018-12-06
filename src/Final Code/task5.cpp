@@ -286,12 +286,12 @@ void Task5::power_itration(int k)
     }
     vectors=temp;
 }
-void Task5::output_to_csv(const string filename)
+void Task5::output_to_csv(const string filename, int k)
 {
     ofstream file(filename);
 
-    file<<S.get_row_size()<<" "<<S.get_column_size()<<endl;
-    for(int i=0;i<vectors.get_row_size();i++)
+    file<<k<<" "<<S.get_column_size()<<endl;
+    for(int i=0;i<k;i++)
     {
         for(int j=0;j<vectors.get_column_size()-1;j++)
         {

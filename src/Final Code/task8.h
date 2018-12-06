@@ -4,7 +4,7 @@
 #include"row_matrix.h"
 #include"column_matrix.h"
 
-class robin_algo
+class Task8
 {
     protected:
         int rows;
@@ -12,11 +12,11 @@ class robin_algo
         column_matrix matrix_C;
         row_matrix matrix_R;
     public:
-        robin_algo(Matrixm M);
+        Task8(Matrixm M);
         Matrixm permutate(row_matrix matrix_R, column_matrix matrix_C, Matrixm M);
-        void create();
+        void diagonals();
         Matrixm get_final_matrix();
-        void final_fun(Matrixm M);
+        // void final_fun(Matrix M);
 };
 
 #endif

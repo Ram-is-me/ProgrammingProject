@@ -29,6 +29,6 @@ class Task5
     public:
     Task5(string filename);
     void power_itration(int k);
-    void output_to_csv(string );
+    void output_to_csv(string, int);
     };
 #endif

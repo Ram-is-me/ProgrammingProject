@@ -102,7 +102,7 @@ void runTask5(string inputfile, string outputfile, int ev)
 {
     Task5 task(inputfile);
     task.power_itration(ev);
-    task.output_to_csv(outputfile);
+    task.output_to_csv(outputfile, ev);
 }
 
 void runTask6(string input)
@@ -123,8 +123,8 @@ void runTask8(string input)
 {
     Matrixm M;
     M.fill_data_from_csv(input);
-    robin_algo R(M);
-    R.create();
+    Task8 R(M);
+    R.diagonals();
     M = R.get_final_matrix();
     // R.final_fun(M);
     cout << M;

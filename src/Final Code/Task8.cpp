@@ -5,7 +5,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-robin_algo::robin_algo(Matrixm _M)
+Task8::Task8(Matrixm _M)
 {
     M = _M;
     rows = _M.getrows();
@@ -13,19 +13,19 @@ robin_algo::robin_algo(Matrixm _M)
     matrix_C = column_matrix(rows);
 }
 
-Matrixm robin_algo::permutate(row_matrix matrix_R, column_matrix matrix_C, Matrixm M)
+Matrixm Task8::permutate(row_matrix matrix_R, column_matrix matrix_C, Matrixm M)
 {
-    // this->setValues(getIndentity(this->getCols()));
-    M = matrix_R.permutate(M); 
-    M = matrix_C.permutate(M); 
+    M = matrix_R.permutate(M);
+    M = matrix_C.permutate(M);
     return M;
-}
+} 
 
-void robin_algo::create()
+void Task8::diagonals()
 {
 
     int index = 0;
     int max = M.get_max_of_upper();
+    bool row_direction;
 
     matrix_R.mapit(index,M.get_row_index(max));
     matrix_C.mapit(index,M.get_column_index(max));
@@ -33,8 +33,7 @@ void robin_algo::create()
     M = permutate(matrix_R,matrix_C,M);
 
     max = M.get_max_of_index(index);
-    bool row_direction;
-    index++;
+    index = index +1;
     int max_rows = M.get_max_of_column(index);
     int max_columns = M.get_max_of_row(index);
 
@@ -48,34 +47,33 @@ void robin_algo::create()
     {
         row_direction = false;
         matrix_C.mapit(index,M.get_max_of_row(index));
-        M = matrix_C.permutate(M); 
+        M = matrix_C.permutate(M);
     }
 
     int row_index = 2;
     int column_index = 2;
-    index++;
+    index = index+1;
     while(row_index < rows || column_index < rows)
     {
-        if(row_direction)
+        if(row_direction == true)
         {
             max = M.get_max_of_column(row_index);
             matrix_R.mapit(row_index,max);
             M = matrix_R.permutate(M);
-            row_index++;
+            row_index = row_index+1;
         }
         else
         {
             max = M.get_max_of_row(column_index);
             matrix_C.mapit(column_index,max);
             M = matrix_C.permutate(M);
-            column_index++;
+            column_index = column_index+1;
         }
-        // M = permutate(matrix_R,matrix_C,initialMatrix);
         row_direction = !row_direction;
     }
 }
 
-Matrixm robin_algo::get_final_matrix()
+Matrixm Task8::get_final_matrix()
 {
     return M;
 }
@@ -84,6 +82,6 @@ Matrixm robin_algo::get_final_matrix()
 // {
 //     // this->robin_algo(M);
 //     this->permutate(matrix_R,matrix_C,M);
-//     this->create();
+//     this->diagonals();
 //     cout << this->get_final_matrix();
 // }
